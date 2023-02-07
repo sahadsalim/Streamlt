@@ -20,8 +20,8 @@ if uploaded_file is not None:
     dataframe = pd.read_csv(uploaded_file)
     st.write(dataframe)
 
-    data=pdataframe;
-    groupby_symbol = data.groupby('symbol')
+#     data=pdataframe;
+    groupby_symbol = dataframe.groupby('symbol')
     INDEX = 0
     ALL_DICT = {}
     for symbol in groupby_symbol.groups:
