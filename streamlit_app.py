@@ -57,3 +57,4 @@ if uploaded_file is not None:
     buy_amt = (df['BUY_QUANTITY']*df['BUY_AVG']).sum()
     sell_amt = (df['SELL_QUANTITY']*df['SELL_AVG']).sum()
     print(((sell_amt - buy_amt)/buy_amt)*100)
+    st.text('Win loss ration is ',((sell_amt - buy_amt)/buy_amt)*100)
