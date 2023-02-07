@@ -48,3 +48,4 @@ if uploaded_file is not None:
         INDEX+=1
 
     df = pd.DataFrame.from_dict(ALL_DICT,orient='index')
+    st.write(df)
