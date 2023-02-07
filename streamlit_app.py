@@ -19,7 +19,7 @@ if uploaded_file is not None:
     # Can be used wherever a "file-like" object is accepted:
     dataframe = pd.read_csv(uploaded_file)
     st.write(dataframe)
-
+    st.header('My header')
 #     data=pdataframe;
     groupby_symbol = dataframe.groupby('symbol')
     INDEX = 0
@@ -49,3 +49,11 @@ if uploaded_file is not None:
 
     df = pd.DataFrame.from_dict(ALL_DICT,orient='index')
     st.write(df)
+    
+    
+    df[df['BUY_QUANTITY'] != df['SELL_QUANTITY']] # Open Positions
+    df[df['BUY_QUANTITY'] == df['SELL_QUANTITY']] # Closed Positions
+    closed_pos = df[df['BUY_QUANTITY'] == df['SELL_QUANTITY']]
+    buy_amt = (df['BUY_QUANTITY']*df['BUY_AVG']).sum()
+    sell_amt = (df['SELL_QUANTITY']*df['SELL_AVG']).sum()
+    print(((sell_amt - buy_amt)/buy_amt)*100)
