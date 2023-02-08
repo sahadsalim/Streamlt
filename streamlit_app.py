@@ -19,7 +19,9 @@ if uploaded_file is not None:
     # Can be used wherever a "file-like" object is accepted:
     dataframe = pd.read_csv(uploaded_file)
     st.write(dataframe)
-    st.header('My header')
+    st.header('P/L Tracker')
+    st.markdown('''##### <span style="color:gray">Calculate the P/L percentale from tradebook csv</span>
+            ''', unsafe_allow_html=True)
 #     data=pdataframe;
     groupby_symbol = dataframe.groupby('symbol')
     INDEX = 0
@@ -59,3 +61,11 @@ if uploaded_file is not None:
     print(((sell_amt - buy_amt)/buy_amt)*100)
     st.title('Todays Profit percentage')
     st.write('profit percentage is ',((sell_amt - buy_amt)/buy_amt)*100)
+    
+    
+    styler_player = (df
+                   .style.set_properties(**{'background': 'azure', 'border': '1.2px solid'})
+                   .hide(axis='index')
+                   .set_table_styles(dfstyle)
+                   .applymap(color_surplusvalue, subset=pd.IndexSlice[:, ['Surplus Value ($M)']]))
+    st.table(styler_player)
