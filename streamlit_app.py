@@ -2,6 +2,9 @@ import streamlit as st
 import pandas as pd
 from io import StringIO
 import numpy as np;
+st.header('P/L Tracker')
+st.markdown('''##### <span style="color:gray">Calculate the P/L percentale from tradebook csv</span>
+        ''', unsafe_allow_html=True)
 uploaded_file = st.file_uploader("Choose a file")
 if uploaded_file is not None:
     # To read file as bytes:
@@ -19,9 +22,7 @@ if uploaded_file is not None:
     # Can be used wherever a "file-like" object is accepted:
     dataframe = pd.read_csv(uploaded_file)
     st.write(dataframe)
-    st.header('P/L Tracker')
-    st.markdown('''##### <span style="color:gray">Calculate the P/L percentale from tradebook csv</span>
-            ''', unsafe_allow_html=True)
+
 #     data=pdataframe;
     groupby_symbol = dataframe.groupby('symbol')
     INDEX = 0
@@ -62,7 +63,70 @@ if uploaded_file is not None:
     st.title('Todays Profit percentage')
     st.write('profit percentage is ',((sell_amt - buy_amt)/buy_amt)*100)
     
-    
+    ##########################################
+    ##  Style and Formatting                ##
+    ##########################################
+
+    # CSS for tables
+
+    hide_table_row_index = """
+                <style>
+                thead tr th:first-child {display:none}
+                tbody th {display:none}
+                </style>   """
+
+    center_heading_text = """
+        <style>
+            .col_heading   {text-align: center !important}
+        </style>          """
+
+    center_row_text = """
+        <style>
+            td  {text-align: center !important}
+        </style>      """
+
+    # Inject CSS with Markdown
+
+    st.markdown(hide_table_row_index, unsafe_allow_html=True)
+    st.markdown(center_heading_text, unsafe_allow_html=True) 
+    st.markdown(center_row_text, unsafe_allow_html=True) 
+
+    # More Table Styling
+
+    def color_surplusvalue(val):
+        if str(val) == '0':
+            color = 'azure'
+        elif str(val)[0] == '-':
+            color = 'lightpink'
+        else:
+            color = 'lightgreen'
+        return 'background-color: %s' % color
+
+    heading_properties = [('font-size', '16px'),('text-align', 'center'),
+                          ('color', 'black'),  ('font-weight', 'bold'),
+                          ('background', 'mediumturquoise'),('border', '1.2px solid')]
+
+    cell_properties = [('font-size', '16px'),('text-align', 'center')]
+
+    dfstyle = [{"selector": "th", "props": heading_properties},
+                   {"selector": "td", "props": cell_properties}]
+
+    # Expander Styling
+
+    st.markdown(
+        """
+    <style>
+    .streamlit-expanderHeader {
+     #   font-weight: bold;
+        background: aliceblue;
+        font-size: 18px;
+    }
+    </style>
+    """,
+        unsafe_allow_html=True,
+    )
+
+
     styler_player = (df
                    .style.set_properties(**{'background': 'azure', 'border': '1.2px solid'})
                    .hide(axis='index')
