@@ -5,8 +5,9 @@ import numpy as np;
 st.header('P/L Tracker')
 st.markdown('''##### <span style="color:gray">Calculate the P/L percentale from tradebook csv</span>
         ''', unsafe_allow_html=True)
-tab_pl, tab_graph = st.tabs(["Pl find", "Graph plot"])
-with tab_pl:
+# tab_pl, tab_graph = st.tabs(["Pl find", "Graph plot"])
+tab1, tab2, tab3 = st.tabs(["Pl find", "Graph", "Owl"])
+with tab1:
         st.write("Please choose the tradebook csv file")
         uploaded_file = st.file_uploader("Choose a file")
         if uploaded_file is not None:
@@ -136,5 +137,5 @@ with tab_pl:
                            .set_table_styles(dfstyle)
                            .applymap(color_surplusvalue))
             st.table(styler_player)
-with tab_graph:
-        st.write("Graphs")
+with tab2 :
+        st.header("Graphs")
