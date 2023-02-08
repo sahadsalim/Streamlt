@@ -131,5 +131,5 @@ if uploaded_file is not None:
                    .style.set_properties(**{'background': 'azure', 'border': '1.2px solid'})
                    .hide(axis='index')
                    .set_table_styles(dfstyle)
-                   .applymap(color_surplusvalue, subset=pd.IndexSlice[:, ['Surplus Value ($M)']]))
+                   .applymap(color_surplusvalue))
     st.table(styler_player)
