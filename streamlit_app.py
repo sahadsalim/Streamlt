@@ -3,9 +3,7 @@ import pandas as pd
 from io import StringIO
 import numpy as np;
 st.set_page_config(layout="wide")
-st.header('P/L Tracker')
-st.markdown('''##### <span style="color:gray">Calculate the P/L percentale from tradebook csv</span>
-        ''', unsafe_allow_html=True);
+
 
 # Sidebar setup
 st.sidebar.title('Sidebar')
@@ -17,6 +15,9 @@ if upload_file is not None:
     st.session_state['df'] = df;
 
 def main_page():
+    st.header('P/L Tracker')
+    st.markdown('''##### <span style="color:gray">Calculate the P/L percentale from tradebook csv</span>
+            ''', unsafe_allow_html=True);
     # tab_pl, tab_graph = st.tabs(["Pl find", "Graph plot"])
     tab1, tab2, tab3 = st.tabs(["Pl find", "Graph", "Owl"])
     with tab1:
@@ -154,6 +155,11 @@ def main_page():
 def page2():
     st.markdown("# Page 2 ❄️")
     st.sidebar.markdown("# Page 2 ❄️")
+    import streamlit as st
+    # import pandas as pd
+    # st.write("homeee")
+    df=st.session_state['df']
+    st.write(df)
 page_names_to_funcs = {
     "Main Page": main_page,
     "Page 2": page2,
