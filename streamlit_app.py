@@ -2,9 +2,20 @@ import streamlit as st
 import pandas as pd
 from io import StringIO
 import numpy as np;
+st.set_page_config(layout="wide")
 st.header('P/L Tracker')
 st.markdown('''##### <span style="color:gray">Calculate the P/L percentale from tradebook csv</span>
-        ''', unsafe_allow_html=True)
+        ''', unsafe_allow_html=True);
+
+# Sidebar setup
+st.sidebar.title('Sidebar')
+upload_file = st.sidebar.file_uploader('Upload a file containing earthquake data')
+
+# Check if file has been uploaded
+if upload_file is not None:
+    df = pd.read_csv(upload_file)
+    st.session_state['df'] = df
+
 # tab_pl, tab_graph = st.tabs(["Pl find", "Graph plot"])
 tab1, tab2, tab3 = st.tabs(["Pl find", "Graph", "Owl"])
 with tab1:
