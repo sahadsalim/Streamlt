@@ -13,7 +13,10 @@ upload_file = st.sidebar.file_uploader('Upload a file containing earthquake data
 if upload_file is not None:
     df = pd.read_csv(upload_file)
     st.session_state['df'] = df;
-
+while st.session_state['df']:
+    df=st.session_state['df'];
+    df.head();
+    st.write(df);
 def main_page():
     st.header('P/L Tracker')
     st.markdown('''##### <span style="color:gray">Calculate the P/L percentale from tradebook csv</span>
