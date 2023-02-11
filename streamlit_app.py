@@ -17,8 +17,8 @@ with st.sidebar:
     for key in st.session_state.keys():
         if key=='df':
             df=st.session_state['df'];
-            df.head();
-            st.write(df);
+            lf=df.head();
+            st.write(lf);
 def main_page():
     st.header('P/L Tracker')
     st.markdown('''##### <span style="color:gray">Calculate the P/L percentale from tradebook csv</span>
