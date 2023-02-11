@@ -61,14 +61,14 @@ with st.sidebar:
 # df_dist_long = df_dist_long.rename(columns={'value':'miles'})
 
 
-def distance(location1, lat, lon):
-  location1_radian = [radians(_) for _ in location1]
-  location2 = [lat, lon]
-  location2_radian = [radians(_) for _ in location2]
-  result = haversine_distances([location1_radian, location2_radian])
-  result = result * 6371000/1000  # multiply by Earth radius to get kilometers
-
-  return result[0][1]
+def distance(geo):
+    location1=[0.1245, 51.685]
+    location1_radian = [radians(_) for _ in location1]
+    location2 = [geo.Latitude, geo.Longitude]
+    location2_radian = [radians(_) for _ in location2]
+    result = haversine_distances([location1_radian, location2_radian])
+    result = result * 6371000/1000  # multiply by Earth radius to get kilometers
+    return result[0][1]
 
 newdf = pd.DataFrame({
     'Latitude': [-0.123684, -0.129212, -0.123234],
@@ -79,5 +79,5 @@ distanceDf=newdf
 distanceDf = distanceDf.assign(Product=lambda x: (x['Latitude'] * x['Longitude']))
 st.write(distanceDf)
 
-distanceDf=distanceDf.assign(Distance = lambda x: distance([0.1245, 51.685], x.Latitude, x.Longitude))
+distanceDf=distanceDf.assign(Distance = lambda x: (distance(x)))
 st.write(distanceDf)
