@@ -69,6 +69,8 @@ def distance(geo):
     result = haversine_distances([location1_radian, location2_radian])
     st.write(result)
     result = result * 6371000/1000  # multiply by Earth radius to get kilometers
+    st.write(result)
+
     return result[0][1]
 
 newdf = pd.DataFrame({
