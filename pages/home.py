@@ -79,6 +79,7 @@ st.write(newdf)
 distanceDf=newdf
 distanceDf = distanceDf.assign(Product=lambda x: (x['Latitude'] * x['Longitude']))
 st.write(distanceDf)
+st.write(newdf[0])
 distance(newdf[0])
 # distanceDf=distanceDf.assign(Distance = lambda x: (distance(x)))
 # st.write(distanceDf)
