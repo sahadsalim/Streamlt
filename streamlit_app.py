@@ -7,17 +7,19 @@ st.set_page_config(layout="wide")
 
 # Sidebar setup
 st.sidebar.title('Sidebar')
-upload_file = st.sidebar.file_uploader('Upload a file containing earthquake data')
+st.side();
+def side():
+    upload_file = st.sidebar.file_uploader('Upload a file containing earthquake data')
 
-# Check if file has been uploaded
-if upload_file is not None:
-    df = pd.read_csv(upload_file)
-    st.session_state['df'] = df;
-for key in st.session_state.keys():
-    if key=='df':
-        df=st.session_state['df'];
-        df.head();
-        st.write(df);
+    # Check if file has been uploaded
+    if upload_file is not None:
+        df = pd.read_csv(upload_file)
+        st.session_state['df'] = df;
+    for key in st.session_state.keys():
+        if key=='df':
+            df=st.session_state['df'];
+            df.head();
+            st.write(df);
 def main_page():
     st.header('P/L Tracker')
     st.markdown('''##### <span style="color:gray">Calculate the P/L percentale from tradebook csv</span>
