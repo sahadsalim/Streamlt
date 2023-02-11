@@ -7,8 +7,7 @@ st.set_page_config(layout="wide")
 
 # Sidebar setup
 st.sidebar.title('Sidebar')
-st.side();
-def side():
+with st.sidebar:
     upload_file = st.sidebar.file_uploader('Upload a file containing earthquake data')
 
     # Check if file has been uploaded
