@@ -13,7 +13,7 @@ upload_file = st.sidebar.file_uploader('Upload a file containing earthquake data
 if upload_file is not None:
     df = pd.read_csv(upload_file)
     st.session_state['df'] = df;
-while st.session_state['df']:
+while st.session_state['df'].bool():
     df=st.session_state['df'];
     df.head();
     st.write(df);
