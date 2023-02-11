@@ -67,7 +67,7 @@ def distance(geo):
     location2 = [geo.Latitude, geo.Longitude]
     location2_radian = [radians(_) for _ in location2]
     result = haversine_distances([location1_radian, location2_radian])
-    print(result)
+    st.write(result)
     result = result * 6371000/1000  # multiply by Earth radius to get kilometers
     return result[0][1]
 
