@@ -70,9 +70,10 @@ def distance(location1, lat, lon):
 
   return result[0][1]
 
-df = pd.DataFrame({
+newdf = pd.DataFrame({
     'Latitude': [-0.123684, -0.129212, -0.123234],
     'Longitude': [51.485020, 51.507426, 52.476264]
 })
-
-df.apply(lambda x: distance([0.1245, 51.685], x.Latitude, x.Longitude),axis=1)
+st.write(newdf)
+newdf.apply(lambda x: distance([0.1245, 51.685], x.Latitude, x.Longitude),axis=1)
+st.write(newdf)
