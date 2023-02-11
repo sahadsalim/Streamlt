@@ -75,5 +75,6 @@ newdf = pd.DataFrame({
     'Longitude': [51.485020, 51.507426, 52.476264]
 })
 st.write(newdf)
+distanceDf=newdf
 distanceDf=newdf.apply(lambda x: distance([0.1245, 51.685], x.Latitude, x.Longitude),axis=1)
 st.write(distanceDf)
