@@ -30,7 +30,7 @@ def main_page():
             st.write("Please choose the tradebook csv file")
             uploaded_file = st.file_uploader("Choose a file")
             if uploaded_file is not None or not dataframe.empty:
-                if uploaded_file:
+                if uploaded_file is not None:
                     # To read file as bytes:
                     bytes_data = uploaded_file.getvalue()
                 #     st.write(bytes_data)
@@ -44,7 +44,7 @@ def main_page():
                 #     st.write(string_data)
 
                     # Can be used wherever a "file-like" object is accepted:
-                dataframe = pd.read_csv(uploaded_file)
+                    dataframe = pd.read_csv(uploaded_file)
                 st.write(dataframe)
 
             #     data=pdataframe;
