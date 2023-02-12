@@ -112,7 +112,7 @@ styler_mostsimilar = (newdf.style
 st.table(styler_mostsimilar)
 minValue = newdf['Distance'].min();
 st.write(minValue);
-minValueName=newdf.query('Distance' == minValue)['Name'];
+minValueName=newdf.iloc[newdf['Distance']== minValue]['Name'];
 st.write(minValueName);
 
 st.subheader("The nearest place is  :blue[minValueName] ")
