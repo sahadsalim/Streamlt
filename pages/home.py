@@ -82,7 +82,7 @@ st.write(newdf)
 newdf['Distance']=[distance(newdf.iloc[i]) for i in range(len(newdf))]
 st.write(":heavy_minus_sign:" * 74)
 st.subheader("Updated with :blue[distance] ")
-st.wrtte(newdf);
+st.write(newdf);
 # distanceDf=newdf
 # # distanceDf = distanceDf.assign(Product=lambda x: (x['Latitude'] * x['Longitude']))
 # st.write(distanceDf)
