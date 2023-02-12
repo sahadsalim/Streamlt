@@ -29,7 +29,7 @@ def main_page():
             dataframe = pd.read_csv("data/tradebook-QVP700-FO.csv")
             st.write("Please choose the tradebook csv file")
             uploaded_file = st.file_uploader("Choose a file")
-            if uploaded_file is not None:
+            if uploaded_file is not None or dataframe:
                 # To read file as bytes:
                 bytes_data = uploaded_file.getvalue()
             #     st.write(bytes_data)
