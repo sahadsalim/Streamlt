@@ -115,7 +115,7 @@ st.write(minValue);
 minValueName=newdf.query('Distance==@minValue')['Name'].values[0];
 st.write(minValueName);
 
-st.subheader("The nearest place is  :blue[minValueName] ")
+st.subheader("The nearest place is   ",minValueName)
 # distanceDf=newdf
 # # distanceDf = distanceDf.assign(Product=lambda x: (x['Latitude'] * x['Longitude']))
 # st.write(distanceDf)
