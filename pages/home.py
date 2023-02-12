@@ -76,7 +76,7 @@ def distance(geo):
 newdf = pd.DataFrame({
     'Latitude': [-0.123684, -0.129212, -0.123234],
     'Longitude': [51.485020, 51.507426, 52.476264],
-    'Distance':[null,null,null]
+    'Distance':[0,0,0]
 })
 st.write(newdf)
 newdf['Distance']=[distance(x) for i in range(len(newdf))]
