@@ -111,7 +111,9 @@ styler_mostsimilar = (newdf.style
             )                                                  
 st.table(styler_mostsimilar)
 minValue = newdf['Distance'].min();
-st.subheader("The nearest place is  :blue[df.loc[df['Distance'] == minValue]]['Name']] ")
+st.write(minValue);
+minValueName=df.loc[df['Distance'] == minValue]['Name']
+st.subheader("The nearest place is  :blue[minValueName] ")
 # distanceDf=newdf
 # # distanceDf = distanceDf.assign(Product=lambda x: (x['Latitude'] * x['Longitude']))
 # st.write(distanceDf)
