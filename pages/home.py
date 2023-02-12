@@ -79,7 +79,7 @@ newdf = pd.DataFrame({
     'Distance':[0,0,0]
 })
 st.write(newdf)
-newdf['Distance']=[distance(x) for i in range(len(newdf))]
+newdf['Distance']=[distance(newdf.iloc[i]) for i in range(len(newdf))]
 st.write(":heavy_minus_sign:" * 34)
 # distanceDf=newdf
 # distanceDf = distanceDf.assign(Product=lambda x: (x['Latitude'] * x['Longitude']))
