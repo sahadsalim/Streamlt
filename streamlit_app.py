@@ -26,7 +26,7 @@ def main_page():
     # tab_pl, tab_graph = st.tabs(["Pl find", "Graph plot"])
     tab1, tab2, tab3 = st.tabs(["Pl find", "Graph", "Owl"])
     with tab1:
-        dataframe = pd.read_csv("data/tradebook-QVP700-FO.csv")
+            dataframe = pd.read_csv("data/tradebook-QVP700-FO.csv")
             st.write("Please choose the tradebook csv file")
             uploaded_file = st.file_uploader("Choose a file")
             if uploaded_file is not None:
