@@ -81,7 +81,7 @@ dfstyle = [{"selector": "th", "props": heading_properties},
 # Expander Styling
 
 def distance(geo):
-    location1=[0.1245, 51.685]
+    location1=[9.16989, 76.503159]
     location1_radian = [radians(_) for _ in location1]
     location2 = [geo.Latitude, geo.Longitude]
     location2_radian = [radians(_) for _ in location2]
@@ -93,8 +93,9 @@ def distance(geo):
     return result[0][1]
 
 newdf = pd.DataFrame({
-    'Latitude': [-0.123684, -0.129212, -0.123234],
-    'Longitude': [51.485020, 51.507426, 52.476264],
+    'Name': ['TVM', 'COCHIN', 'DELHI'],
+    'Latitude': [8.524139, 	9.931233, 	28.644800],
+    'Longitude':[76.936638, 76.267303, 77.216721],
     'Distance':[0,0,0]
 })
 st.write(newdf)
