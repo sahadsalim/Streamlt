@@ -59,7 +59,26 @@ with st.sidebar:
 #     pd.melt(df_dist_matrix.reset_index(),id_vars='city_A')
 # )
 # df_dist_long = df_dist_long.rename(columns={'value':'miles'})
+# More Table Styling
+def color_surplusvalue(val):
+    if str(val) == '0':
+        color = 'azure'
+    elif str(val)[0] == '-':
+        color = 'pink'
+    else:
+        color = 'green'
+    return 'background-color: %s' % color
 
+heading_properties = [('font-size', '16px'),('text-align', 'center'),
+                    ('color', 'black'),  ('font-weight', 'bold'),
+                    ('background', 'mediumturquoise'),('border', '1.2px solid')]
+
+cell_properties = [('font-size', '16px'),('text-align', 'center')]
+
+dfstyle = [{"selector": "th", "props": heading_properties},
+            {"selector": "td", "props": cell_properties}]
+
+# Expander Styling
 
 def distance(geo):
     location1=[0.1245, 51.685]
@@ -83,6 +102,13 @@ newdf['Distance']=[distance(newdf.iloc[i]) for i in range(len(newdf))]
 st.write(":heavy_minus_sign:" * 74)
 st.subheader("Updated with :blue[distance] ")
 st.write(newdf);
+styler_mostsimilar = (newdf.style
+            .set_properties(**{'background': 'azure', 'border': '1.2px solid'})
+            .hide(axis='index')
+            .set_table_styles(dfstyle)
+            .applymap(color_surplusvalue, subset=pd.IndexSlice[:, ['Distance']])
+            )                                                  
+st.table(styler_mostsimilar)
 # distanceDf=newdf
 # # distanceDf = distanceDf.assign(Product=lambda x: (x['Latitude'] * x['Longitude']))
 # st.write(distanceDf)
