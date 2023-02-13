@@ -79,7 +79,7 @@ dfstyle = [{"selector": "th", "props": heading_properties},
             {"selector": "td", "props": cell_properties}]
 
 # Expander Styling
-
+st.session_state['line']=""
 def distance(geo,location1):
     location1_radian = [radians(_) for _ in location1]
     location2 = [geo.Latitude, geo.Longitude]
@@ -137,4 +137,6 @@ print(my_location.head());
 for ind in my_location.index:
   print(my_location['Place'][ind])
   place,lat,lon,distance=my_location['Place'][ind],my_location['Latitude'][ind],my_location['Longitude'][ind],my_location['Distance'][ind]
-  st.write("I am currently at ",place,"   ",distance.round(1)," km from kochi")
+  st.write("I am currently at ",place,"   ",distance.round(1)," km from kochi");
+  st.session_state['line']="I am currently at ",place,"   ",distance.round(1)," km from kochi";
+st.write(st.session_state['line'])
