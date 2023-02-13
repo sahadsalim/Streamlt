@@ -134,6 +134,9 @@ my_location=pd.DataFrame({
 })
 my_location['Distance']=[distance(my_location.iloc[i],[9.931233,76.267303]) for i in range(len(newdf))]
 print(my_location.head());
+line="i am moving to kochi"
+st.write(st.session_state['line'],key="line")
+
 for ind in my_location.index:
   print(my_location['Place'][ind]);
   time.sleep(2)
@@ -142,4 +145,3 @@ for ind in my_location.index:
   line = "I am currently at "+place+"   "+str(distance.round(1))+" km from kochi";
   print(line)
   st.session_state['line']=line;
-st.write(st.session_state['line'])
