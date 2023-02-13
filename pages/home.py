@@ -80,8 +80,7 @@ dfstyle = [{"selector": "th", "props": heading_properties},
 
 # Expander Styling
 
-def distance(geo):
-    location1=[9.16989, 76.503159]
+def distance(geo,location1):
     location1_radian = [radians(_) for _ in location1]
     location2 = [geo.Latitude, geo.Longitude]
     location2_radian = [radians(_) for _ in location2]
@@ -98,8 +97,13 @@ newdf = pd.DataFrame({
     'Longitude':[76.936638, 76.267303, 77.216721],
     'Distance':[0,0,0]
 })
+my_location=pd.DataFrame({
+    'Place':['adoor','kayamkulam','alappuzha'],
+    'Latitude':[9.152967,9.171331,9.496963],
+    'Longitude':[76.735611,76.501497,76.331908]
+})
 st.write(newdf)
-newdf['Distance']=[distance(newdf.iloc[i]) for i in range(len(newdf))]
+newdf['Distance']=[distance(newdf.iloc[i],[9.16989, 76.503159]) for i in range(len(newdf))]
 st.write(":heavy_minus_sign:" * 74)
 st.subheader("Updated with :blue[distance] ")
 st.write(newdf);
@@ -123,3 +127,14 @@ st.write("The nearest place is   ",minValueName)
 # distance(newdf.iloc[0])
 # distanceDf=distanceDf.assign(Distance = lambda x: (distance(x)))
 # st.write(distanceDf)
+my_location=pd.DataFrame({
+    'Place':['adoor','kayamkulam','alappuzha'],
+    'Latitude':[9.152967,9.171331,9.496963],
+    'Longitude':[76.735611,76.501497,76.331908]
+})
+my_location['Distance']=[distance(my_location.iloc[i],[9.931233,76.267303]) for i in range(len(newdf))]
+print(my_location.head());
+for ind in my_location.index:
+  print(my_location['Place'][ind])
+  place,lat,lon,distance=my_location['Place'][ind],my_location['Latitude'][ind],my_location['Longitude'][ind],my_location['Distance'][ind]
+  st.write("I am currently at ",place,"   ",distance.round(1)," km from kochi")
