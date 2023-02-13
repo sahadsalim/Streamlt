@@ -138,5 +138,7 @@ for ind in my_location.index:
   print(my_location['Place'][ind])
   place,lat,lon,distance=my_location['Place'][ind],my_location['Latitude'][ind],my_location['Longitude'][ind],my_location['Distance'][ind]
   st.write("I am currently at ",place,"   ",distance.round(1)," km from kochi");
-  st.session_state['line']="I am currently at ",place,"   ",distance.round(1)," km from kochi";
+  line = "I am currently at ",place,"   ",distance.round(1)," km from kochi";
+  print(line)
+  st.session_state['line']=line;
 st.write(st.session_state['line'])
