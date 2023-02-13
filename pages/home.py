@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 from sklearn.metrics.pairwise import haversine_distances
 from math import radians
-
+import time
 st.write("homeee")
 # Sidebar setup
 st.sidebar.title('Sidebar')
@@ -135,10 +135,11 @@ my_location=pd.DataFrame({
 my_location['Distance']=[distance(my_location.iloc[i],[9.931233,76.267303]) for i in range(len(newdf))]
 print(my_location.head());
 for ind in my_location.index:
-  print(my_location['Place'][ind])
+  print(my_location['Place'][ind]);
+  time.sleep(10)
   place,lat,lon,distance=my_location['Place'][ind],my_location['Latitude'][ind],my_location['Longitude'][ind],my_location['Distance'][ind]
   st.write("I am currently at ",place,"   ",distance.round(1)," km from kochi");
-  line = "I am currently at ",place,"   ",distance.round(1)," km from kochi";
+  line = "I am currently at "+place+"   "+distance.round(1)+" km from kochi";
   print(line)
   st.session_state['line']=line;
 st.write(st.session_state['line'])
